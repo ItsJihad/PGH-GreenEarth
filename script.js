@@ -13,11 +13,15 @@ const aquatic = document.getElementById("aquatic-trees");
 const allButtons=document.querySelectorAll(".catbuttons")
 
 const productArea = document.getElementById("productContainer");
+const categoryplace = document.getElementById("categoryplace");
 
 const allplantsAPI ="https://openapi.programming-hero.com/api/plants"
 const allcategoriesAPI ="https://openapi.programming-hero.com/api/plants"
 const plantsbycategoriesAPI ="https://openapi.programming-hero.com/api/plants"
 const PlantsDetailAPI ="https://openapi.programming-hero.com/api/plants"
+const categoriesAPI ="https://openapi.programming-hero.com/api/categories"
+
+
 
 
 
@@ -66,18 +70,58 @@ producer=(plants)=>{
 
     }
 
-window.onload=()=>(fetching(allplantsAPI))
 
 
 
 
-buttonclick=(tap)=>{
-    productArea.innerText=""
-    fetching(plantsbycategoriesAPI)
-        allButtons.forEach(button=>{
-        button.classList.remove("bg-green-700")
-        })
-        tap.classList.add("bg-green-700")
-        tap.classList.remove("hover:bg-green-100")
+categoryFetch=(url)=>{
+    fetch(url)
+    .then(res=>res.json())
+    .then((json)=>categorybuttons(json.categories))
+    
 }
+
+
+
+
+
+
+
+
+categorybuttons=(categories)=>{
+        for (const category of categories) {
+            
+            let catbutton = document.createElement("button")
+            catbutton.innerText=""
+            catbutton.classList="self-stretch px-2.5 py-2 bg-[#F0FDF4] text-black rounded  justify-center items-center gap-4 font-medium font-['Inter'] text-start hover:bg-green-600 transition-colors duration-300 "
+
+            catbutton.innerText=category.category_name
+        
+            categoryplace.appendChild(catbutton)
+        
+        
+        document.getElementById("categoryplace").appendChild(catbutton)
+       
+            
+        
+            
+        }
+        
+        
+}
+
+
+
+
+
+
+
+
+
+
+
+window.onload = () => {
+    categoryFetch(categoriesAPI);
+    fetching(allplantsAPI);
+};
 
