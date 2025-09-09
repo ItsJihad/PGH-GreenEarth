@@ -21,7 +21,7 @@ const PlantsDetailAPI ="https://openapi.programming-hero.com/api/plants"
 
 
 
-fetching=(url)=>{
+fetching=(url,id)=>{
     fetch(url)
     .then(res=>res.json())
     .then((json)=>producer(json.plants))
@@ -81,4 +81,3 @@ buttonclick=(tap)=>{
         tap.classList.remove("hover:bg-green-100")
 }
 
-timber.addEventListener("click",buttonclick())
