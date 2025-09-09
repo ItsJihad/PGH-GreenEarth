@@ -23,7 +23,7 @@
     <section>
       <nav>
         <div
-          class="flex flex-col w-full h-[60px] bg-green-700 justify-between items-center p-4 gap-4 sm:flex-row sm:h-[80px]"
+          class="flex flex-col w-full h-[60px] bg-green-700 justify-between items-center p-4 px-10 gap-4 lg:flex-row lg:h-[80px]"
         >
           <div class="flex items-center justify-center px-8 ">
             <svg
@@ -75,7 +75,7 @@
               />
             </svg>
           </div>
-          <div class="hidden sm:flex justify-start items-center gap-6">
+          <div class="hidden lg:flex justify-start items-center gap-6">
             <div
               class="justify-start text-white text-base font-medium font-['Inter']"
             >
@@ -93,7 +93,7 @@
             </div>
           </div>
           <div
-            class="hidden sm:flex px-5 py-3 bg-yellow-400 rounded-[999px] justify-center items-center gap-2.5"
+            class="hidden lg:block flex px-5 py-3 bg-yellow-400 rounded-[999px] justify-center items-center gap-2.5"
           >
             <div
               class="justify-start text-green-700 text-base font-medium font-['Inter'] px-8"
@@ -103,39 +103,62 @@
           </div>
         </div>
 
-        <section id="mobilesection" class="px-8 sm:hidden">
-          <div class="w-full h-14 relative bg-green-900 rounded-[999px] mt-2">
+        <section id="mobilesection" class="px-8 lg:hidden">
+          <div class="w-full h-14 relative  rounded-[999px] mt-3">
     <div class="flex items-center justify-between">
-            <div class="w-full h-5 left-[46px] top-[17px] relative px-4">
-                <div class="flex items-center justify-center border border-red-900">
-                    <div  class="left-0 top-0 absolute justify-start text-white text-base font-medium font-['Inter']">About</div>
-                    <div class="left-[71px] top-0 absolute justify-start text-white text-base font-medium font-['Inter']">Gallery</div>
-                    <Button class="text-green-700 text-base font-medium font-['Inter'] bg-yellow-400 rounded-[999px]  px-5 py-3 left-[184px] mt-5 absolute inline-flex justify-center items-center gap-2.5 border border-red-900" >Plant a Tree</Button>
-                </div>
-          </div>
+           
+
+        <div class="flex justify-center items-center bg-green-900 p-4 relative w-full max-w-3xl mx-auto rounded-xl">
+  <!-- Menu items -->
+  <div class="flex space-x-6 text-white text-base lg:text-lg font-medium font-['Inter']">
+    <div>About</div>
+    <div>Gallery</div>
+  </div>
+
+  <!-- Button -->
+  <button class="ml-6 text-green-700 text-base lg:text-lg font-medium font-['Inter'] bg-yellow-400 rounded-full px-4 lg:px-5 py-2 lg:py-3 inline-flex justify-center items-center">
+    Plant a Tree
+  </button>
+</div>
+
+
+
         </section>
       </nav>
     </section>
 
     <!-- Banner -->
-<section >
-        <div class="w-half h-70 relative mt-3 sm:mt-0 w-full h-96 bg-[#CFF0DC] ">
+<section class="relative bg-[#CFF0DC] mt-7 lg:mt-0 overflow-hidden">
  
-  <img class="w-[224px] h-[120px] mt-66 left-[-30px] sm:w-[546px] h-96 left-0 top-0 absolute border border-red-600" src="/assets/hero-leaf1.png" />
-  <img class="w-[224px] h-[120px] mt-66 right-[-30px] sm:w-[546px] h-96 right-0 top-0 absolute border border-red-600" src="/assets/hero-leaf2.png" />
-  <div class="flex flex-col items-center justify-center p-8 " >
-    <div class="sm:mt-20" >
-            <div class="self-stretch text-center justify-start text-gray-800 text-5xl font-bold font-['Inter'] leading-[60px]">Plant a Tree, Grow a Future</div>
-            <div class="opacity-80 text-center justify-start text-gray-800 text-base font-normal font-['Inter'] leading-normal">Join our mission to plant 1 million trees and make the Earth greener for future<br/>generations.</div>
-    </div>
-    <div class="flex items-center justify-center mt-4">
-        <div class="px-5 py-3 bg-yellow-400 rounded-[999px] inline-flex justify-center items-center gap-2.5">
-        <div class="justify-start text-green-700 text-base font-bold font-['Inter']">Get Involved</div>
-        </div>
+  <img 
+    class="absolute bottom-0 -left-10 w-1/2 sm:w-1/3 lg:w-1/4 h-2/4 object-contain lg: bottom-[-25px]" 
+    src="/assets/hero-leaf1.png" 
+    alt="Leaf Left" 
+  />
+  
+ 
+  <img 
+    class="absolute bottom-0 -right-10 w-1/2 sm:w-1/3 lg:w-1/4 h-2/4 object-contain lg: bottom-[-25px] " 
+    src="/assets/hero-leaf2.png" 
+    alt="Leaf Right" 
+  />
+  
+ 
+  <div class="flex flex-col items-center justify-center text-center px-4 lg:px-8 py-16 lg:py-32">
+    <h1 class="text-3xl lg:text-5xl font-bold leading-snug lg:leading-[60px] text-gray-800 font-['Inter']">
+      Plant a Tree, Grow a Future
+    </h1>
+    <p class="mt-4 text-base lg:text-lg text-gray-800 font-['Inter'] opacity-80">
+      Join our mission to plant 1 million trees and make the Earth greener for future<br/>generations.
+    </p>
+    <div class="mt-6">
+      <button class="px-5 py-3 bg-yellow-400 text-green-700 font-bold  font-['Inter'] rounded-full">
+        Get Involved
+      </button>
     </div>
   </div>
-</div>
-    </section>
+</section>
+
 
     <!-- CONTAINER -->
 <section class="flex justify-center items-center">
@@ -145,8 +168,8 @@
   <div class="self-stretch inline-flex justify-start items-start gap-7 ">
 
     <!-- Categories -->
-    <div class="hidden sm:block w-64  flex-col justify-start items-start gap-4 ">
-      <div class="self-stretch justify-start text-black text-xl font-semibold font-['Inter'] leading-7 ">Categories</div>
+    <div class="hidden lg:block w-64  flex-col justify-start items-start gap-4 ">
+      <div class="self-stretch justify-start text-black text-xl font-semibold font-['Inter'] leading-7 py-3">Categories</div>
       <div class="self-stretch flex flex-col justify-start items-start">
                         <div class="self-stretch px-2.5 py-2 bg-green-700 rounded inline-flex justify-start items-center gap-2.5">
                         <div class="justify-start text-white text-base font-medium font-['Inter']">All Trees</div>
@@ -184,8 +207,8 @@
       </div>
     </div>
 
-    <!-- CAARDS SECTION -->
-    <div class="w-full grid grid-cols-1 gap-7 sm:grid-cols-3">
+    <!-- CARDS SECTION -->
+    <div class="w-full grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
   <div class="p-4 bg-white rounded-lg flex flex-col gap-3">
     <div class="h-48 bg-gray-200 rounded-lg"></div>
     <div class="flex gap-3">
@@ -253,7 +276,7 @@
 </div>
 
 <!-- CART SECTION -->
-    <div class=" hidden sm:flex w-64 self-stretch p-4 bg-white rounded-2xl flex-col justify-start items-start gap-2">
+    <div class=" hidden lg:flex w-64 self-stretch p-4 bg-white rounded-2xl flex-col justify-start items-start gap-2">
       <div class="self-stretch justify-start text-black text-xl font-semibold font-['Inter'] leading-7">Your Cart</div>
       <div class="self-stretch px-3 py-2 bg-green-50 rounded-lg inline-flex justify-start items-center gap-2.5">
         <div class="flex-1 inline-flex flex-col justify-start items-start gap-1">
@@ -292,7 +315,7 @@
 <div class="-mt-10 w-full flex flex-col items-center gap-10">
   <div class="text-center text-gray-800 text-3xl font-semibold leading-10">
     Our Impact</div>
-  <div class="p-12 flex justify-center items-center grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+  <div class="p-12 flex justify-center items-center grid grid-cols-1 lg:grid-cols-3 gap-4 w-full">
    
     <div class="p-10 bg-white rounded-xl shadow-md flex flex-col items-center gap-3">
       <div class="text-green-700 text-3xl font-semibold">500K+</div>
@@ -319,7 +342,7 @@
   <div class="w-full top-[100px] absolute inline-flex flex-col justify-start items-center gap-10">
     <div class=" self-stretch text-center justify-start text-white text-3xl font-semibold font-['Inter'] leading-10">Plant a Tree Today</div>
         <div class="self-stretch h-80 inline-flex justify-center items-start gap-12">
-  <div class="w-90 sm:w-[650px] p-10 bg-green-700 rounded-xl shadow-[0px_4px_22px_0px_rgba(0,0,0,0.06)] inline-flex flex-col justify-start items-center gap-5">
+  <div class="w-90 lg:w-[650px] p-10 bg-green-700 rounded-xl shadow-[0px_4px_22px_0px_rgba(0,0,0,0.06)] inline-flex flex-col justify-start items-center gap-5">
     <div class="flex justify-center items-center self-stretch flex flex-col  gap-3">
       
       <!--  -->
@@ -352,6 +375,25 @@
  <footer>
     <p class="text-white text-base font-medium font-['Inter'] bg-green-900  text-center w-full h-16 flex justify-center items-center">© 2025 Green Earth. All Rights Reserved.</p>
  </footer>
+
+
+ <!-- Sticky Footer -->
+<footer class="lg:hidden">
+    <section id="mobilesection" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 w-[90%] max-w-sm z-50">
+  <div class="bg-green-900 rounded-full shadow-lg p-3">
+    <div class="flex justify-between items-center space-x-4">
+      <button class="flex-1 bg-yellow-400 text-green-900 font-medium rounded-full py-2 px-4 text-base lg:text-lg hover:bg-yellow-300 transition">
+        Categories
+      </button>
+      <button class="flex-1 bg-yellow-400 text-green-900 font-medium rounded-full py-2 px-4 text-base lg:text-lg hover:bg-yellow-300 transition">
+        Cart
+      </button>
+    </div>
+  </div>
+</section>
+
+</footer>
+
 
     <script src="/script.js"></script>
   </body>
