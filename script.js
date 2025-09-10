@@ -1,17 +1,4 @@
-const alltrees = document.getElementById("all-trees");
-const fruittrees = document.getElementById("fruit-trees");
-const flowering = document.getElementById("flowering-trees");
-const shade = document.getElementById("shade-trees");
-const medicinal = document.getElementById("medicinal-trees");
-const timber = document.getElementById("timber-trees");
-const evergreen = document.getElementById("evergreen-trees");
-const ornamental = document.getElementById("ornamental-trees");
-const bamboo = document.getElementById("bamboo-trees");
-const climbers = document.getElementById("climbers-trees");
-const aquatic = document.getElementById("aquatic-trees");
-
 const allButtons = document.querySelectorAll(".catbuttons");
-
 const productArea = document.getElementById("productContainer");
 const categoryplace = document.getElementById("categoryplace");
 
@@ -21,21 +8,26 @@ const plantsbycategoriesAPI =
   "https://openapi.programming-hero.com/api/category/${id}";
 const PlantsDetailAPI = "https://openapi.programming-hero.com/api/plant/${id}";
 
+// ----------------------------------------------------This Is the Fetch Section------------------------------------------------------------------
+
 let url;
-fetching = (url,id) => {
+fetching = (url, id) => {
   return fetch(url)
     .then((res) => res.json())
     .then((data) => data);
 };
 
+// ---------------------------------------------------------This Handles Products------------------------------------------------------------------
 const handler = (data) => {
+
+  // ----------------------------------------------------This Creates Product-------------------------------------------------------------------
   if ("plants" in data && Array.isArray(data.plants)) {
     data.plants.forEach((plant) => {
       const Divplacer = document.createElement("div");
       Divplacer.innerHTML = "";
       Divplacer.innerHTML = `
             
-            <div class="p-4 bg-white rounded-lg flex flex-col gap-3 ">
+            <div class="p-4 bg-white rounded-lg flex flex-col gap-3 " id="${plant.id}">
                 <img src="${plant.image}"  class="h-48  rounded-lg">
                 <div class="flex gap-3">
                 <div class="flex-1 flex flex-col gap-2">
@@ -51,7 +43,7 @@ const handler = (data) => {
                     </div>
                 </div>
                 </div>
-                <button class="w-full px-5 py-3 bg-green-700 hover:bg-yellow-300 rounded-full text-white text-base font-medium">
+                <button class=" Addtocart w-full px-5 py-3 bg-green-700 hover:bg-yellow-300 rounded-full text-white text-base font-medium">
                 Add to Cart
                 </button>
             </div>
@@ -59,8 +51,18 @@ const handler = (data) => {
             
             `;
       document.getElementById("productContainer").appendChild(Divplacer);
+
+
+
+      // ----------------------------------------------------This Controls the Cart-------------------------------------------------------------------
+      const Addtocart = document.querySelectorAll(".Addtocart");
     });
+
+
+    // ----------------------------------------------------This Category Buttons-------------------------------------------------------------------
   } else if ("categories" in data && Array.isArray(data.categories)) {
+
+   
     let Abutton = document.createElement("button");
 
     Abutton.classList =
@@ -69,16 +71,14 @@ const handler = (data) => {
     Abutton.innerText = "All Trees";
 
     Abutton.addEventListener("click", () => {
+      const catbuttons = document.querySelectorAll(".catbuttons");
+      catbuttons.forEach((button) => button.classList.remove("active"));
 
-    const catbuttons = document.querySelectorAll(".catbuttons");
-    catbuttons.forEach((button) => button.classList.remove("active"));
+      Abutton.classList.add("active");
 
-   
-    Abutton.classList.add("active");
-    
-    document.getElementById("productContainer").innerHTML=""
-    fetching(allplantsAPI).then(handler);
-  });
+      document.getElementById("productContainer").innerHTML = "";
+      fetching(allplantsAPI).then(handler);
+    });
 
     categoryplace.appendChild(Abutton);
 
@@ -96,19 +96,19 @@ const handler = (data) => {
           button.classList.remove("active");
         });
         Cbutton.classList.add("active");
-        console.log(category.id)
-        
-        document.getElementById("productContainer").innerHTML=""
+
+        document.getElementById("productContainer").innerHTML = "";
 
         const url = `https://openapi.programming-hero.com/api/category/${category.id}`;
         console.log("Fetching category:", url);
         fetching(url).then(handler);
-
       });
     });
   }
 };
 
+
+// ---------------------------------------------------------------This Loads everything on Boot -----------------------------------------------------
 window.onload = () => {
   fetching(allplantsAPI).then(handler);
   fetching(allcategoriesAPI).then(handler);
