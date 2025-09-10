@@ -19,7 +19,6 @@ fetching = (url, id) => {
 
 // ---------------------------------------------------------This Handles Products------------------------------------------------------------------
 const handler = (data) => {
-
   // ----------------------------------------------------This Creates Product-------------------------------------------------------------------
   if ("plants" in data && Array.isArray(data.plants)) {
     data.plants.forEach((plant) => {
@@ -31,7 +30,7 @@ const handler = (data) => {
                 <img src="${plant.image}"  class="h-48  rounded-lg">
                 <div class="flex gap-3">
                 <div class="flex-1 flex flex-col gap-2">
-                    <div class="text-gray-800 text-sm font-semibold">${plant.name}</div>
+                    <div class="text-gray-800 text-sm font-semibold" onclick="my_modal_1.showModal()" >${plant.name}</div>
                     <div class="opacity-80 text-gray-800 text-xs leading-none">
                     ${plant.description}
                     </div>
@@ -52,17 +51,12 @@ const handler = (data) => {
             `;
       document.getElementById("productContainer").appendChild(Divplacer);
 
-
-
       // ----------------------------------------------------This Controls the Cart-------------------------------------------------------------------
       const Addtocart = document.querySelectorAll(".Addtocart");
     });
 
-
     // ----------------------------------------------------This Category Buttons-------------------------------------------------------------------
   } else if ("categories" in data && Array.isArray(data.categories)) {
-
-   
     let Abutton = document.createElement("button");
 
     Abutton.classList =
@@ -82,31 +76,63 @@ const handler = (data) => {
 
     categoryplace.appendChild(Abutton);
 
+    let Abuts = document
+      .getElementById("mobileCategorialmoal")
+      .appendChild(Abutton.cloneNode(true));
+
     data.categories.forEach((category) => {
       let Cbutton = document.createElement("button");
       Cbutton.classList =
-        "catbuttons self-stretch px-2.5 py-2 bg-[#FFFFF] text-black rounded inline-flex justify-start items-center gap-2.5 font-medium font-['Inter'] text-base hover:bg-green-200 transition-colors duration-300";
+        "catbuttons self-stretch px-2.5 py-2 bg-green-200  m-2 sm:bg-transparent text-black rounded inline-flex justify-start items-center  font-medium font-['Inter'] text-base hover:bg-green-200 transition-colors duration-300";
       Cbutton.id = category.id;
       Cbutton.innerText = category.category_name;
+
       categoryplace.appendChild(Cbutton);
+      let mobileButton = Cbutton.cloneNode(true);
 
-      Cbutton.addEventListener("click", () => {
-        const catbuttons = document.querySelectorAll(".catbuttons");
-        catbuttons.forEach((button) => {
-          button.classList.remove("active");
+      document
+        .getElementById("mobileCatbuttons")
+        .addEventListener("click", () => {
+          document
+            .getElementById("mobileCategorialmoal")
+            .appendChild(mobileButton);
         });
-        Cbutton.classList.add("active");
 
-        document.getElementById("productContainer").innerHTML = "";
+      clicker = (but) => {
+        but.addEventListener("click", () => {
+          const catbuttons = document.querySelectorAll(".catbuttons");
+          catbuttons.forEach((button) => {
+            button.classList.remove("active");
+          });
+          but.classList.add("active");
 
-        const url = `https://openapi.programming-hero.com/api/category/${category.id}`;
-        console.log("Fetching category:", url);
-        fetching(url).then(handler);
-      });
+          document.getElementById("productContainer").innerHTML = "";
+
+          const url = `https://openapi.programming-hero.com/api/category/${category.id}`;
+          fetching(url).then(handler);
+        });
+      };
+
+      clicker(Cbutton);
+      clicker(mobileButton);
+      clicker(Abuts);
+
+      // Cbutton.addEventListener("click", () => {
+      //   const catbuttons = document.querySelectorAll(".catbuttons");
+      //   catbuttons.forEach((button) => {
+      //     button.classList.remove("active");
+      //   });
+      //   Cbutton.classList.add("active");
+
+      //   document.getElementById("productContainer").innerHTML = "";
+
+      //   const url = `https://openapi.programming-hero.com/api/category/${category.id}`;
+      //   console.log("Fetching category:", url);
+      //   fetching(url).then(handler);
+      // });
     });
   }
 };
-
 
 // ---------------------------------------------------------------This Loads everything on Boot -----------------------------------------------------
 window.onload = () => {
@@ -114,4 +140,32 @@ window.onload = () => {
   fetching(allcategoriesAPI).then(handler);
 };
 
+// ---------------------------------------------------Main Modal-----------------------------------------------
 
+
+
+modalmaker = (data) => {
+ 
+  const mainModal = document.getElementById("MainModal");
+  mainModal.innerHTML = "";
+  mainModal.innerHTML = `
+    <div class="p-4 bg-white rounded-lg flex flex-col gap-3 " id="${data.id}">
+    <div class="text-gray-800 text-2xl font-semibold" onclick="my_modal_1.showModal()" >${data.name}</div>
+                <img src="${data.image}"  class="h-48  rounded-lg">
+                <div class="flex flex-col gap-3">
+                <div class="text-gray-800 text-sm font-semibold" onclick="my_modal_1.showModal()" >Category : ${data.category}</div>
+                <div class="flex-1 flex flex-col gap-2">
+                  <div class="flex-1 text-left text-gray-800 text-sm font-semibold">৳ Price : ${data.price}</div>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                    <div class="text-gray-800 text-sm font-itallic" onclick="my_modal_1.showModal()" >Description : ${data.description}</div>
+                </div>
+                </div>
+                <button class=" Addtocart w-full px-5 py-3 bg-green-700 hover:bg-yellow-300 rounded-full text-white text-base font-medium">
+                Add to Cart
+                </button>
+            </div>
+
+
+      `;
+};
