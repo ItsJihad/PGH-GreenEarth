@@ -9,6 +9,8 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'><text y='50%' font-size='50'>🌿</text></svg>">
+
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
       rel="stylesheet"
@@ -16,7 +18,7 @@
     />
     <link rel="stylesheet" href="/stylesheet.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>green Earth</title>
+    <title>Green Earth</title>
   </head>
   <body class="bg-[#F0FDF4] overflow-x-hidden">
 
@@ -173,55 +175,7 @@
 <section class="flex justify-center items-center p-6 " >
 <div class="w-full inline-flex flex-col justify-start items-center gap-10 xl:p-16" id="tututu">
   <div class="self-stretch text-center justify-start text-gray-800 text-3xl font-semibold font-['Inter'] leading-10 ">Choose Your Trees</div>
-<!-- Mobile Category AREA -->
-<div class="  hidden  bg-[#FFFFFF] flex items-center justify-center p-4 rounded-2xl gap-4 p-4 sm:hidden" id="mobileCategoryContainer">
 
-
-
-  <div class=" justify-center  sm:hidden" id="mobileCategoryHolder">
-        <!-- <button class=" self-stretch px-2.5 py-2 active text-black rounded inline-flex justify-start items-center gap-2.5 font-medium font-['Inter'] text-base hover:bg-green-200 transition-colors duration-300 gap-4 p-4 m-2">All Trees</button> -->
-  </div>
-
-</div>
-<!--  -->
-<!-- MOBILE Cart AREA -->
-<div class="  hidden  bg-[#FFFFFF] flex items-center justify-center p-4 rounded-2xl gap-4 p-4 sm:hidden" id="mobileCartContainer">
-
-
-  <div class=" justify-center w-full p-8 sm:hidden" id="mobileCartContainer">
-        
-    <!--  -->
-
-      <div class="  lg:flex w-90 self-stretch  bg-white rounded-2xl flex-col justify-start items-start gap-2" id="cartContainer">
-      <div class=" text-center text-black text-xl font-semibold font-['Inter'] mb-5 ">Your Cart</div>
-      
-      <div class="m-4">
-        <!-- product box is here -->
-        <div class="self-stretch px-3 py-2 bg-green-50 rounded-lg inline-flex justify-start items-center gap-2.5">
-        <div class="flex-1 inline-flex flex-col justify-start items-start gap-1">
-          <div class="self-stretch justify-start text-gray-800 text-sm font-semibold font-['Inter'] leading-tight">Guava Tree</div>
-          <div class="opacity-50 justify-start text-gray-800 text-base font-normal font-['Inter'] leading-normal">৳500 x 1</div>
-        </div>
-        <div class="w-4 h-4 relative overflow-hidden">
-          <div class="w-2.5 h-2.5 left-[3.33px] top-[3.33px] absolute "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z"></path></svg></div>
-        </div>
-      </div>
-      
-      </div>
-      <div class="self-stretch h-0 opacity-10 outline outline-1 outline-offset-[-0.50px] outline-gray-800"></div>
-      <div class="self-stretch inline-flex justify-start items-start gap-2">
-        <div class="flex-1 justify-start text-gray-800 text-base font-medium font-['Inter']">Total:</div>
-        <div class="justify-start text-gray-800 text-base font-medium font-['Inter']">৳1000</div>
-      </div>
-    </div>
-
-    <!--  -->
-
-
-  </div>
-
-</div>
-<!--  -->
 
   <div class="" id="total-Category-Product">
   <div class="self-stretch inline-flex justify-start items-start gap-7 " >
@@ -279,29 +233,23 @@
 <!-- CART SECTION -->
     <div class=" hidden lg:flex w-64 self-stretch p-4 bg-white rounded-2xl flex-col justify-start items-start gap-2" id="cartContainer">
       <div class="self-stretch justify-start text-black text-xl font-semibold font-['Inter'] leading-7">Your Cart</div>
+      
       <div class="self-stretch px-3 py-2 bg-green-50 rounded-lg inline-flex justify-start items-center gap-2.5">
         <div class="flex-1 inline-flex flex-col justify-start items-start gap-1" >
-          <div class="self-stretch justify-start text-gray-800 text-sm font-semibold font-['Inter'] leading-tight">Mango Tree</div>
-          <div class="opacity-50 justify-start text-gray-800 text-base font-normal font-['Inter'] leading-normal">৳500 x 1</div>
+          <div class="self-stretch justify-start text-gray-800 text-sm font-semibold font-['Inter'] leading-tight" id="mangoName">Mango Tree</div>
+          <div class="opacity-50 justify-start text-gray-800 text-base font-normal font-['Inter'] leading-normal">৳<span id="mangoPrice">500</span> x <span id="mangoQuantity">1</span></div>
         </div>
         <div class="w-4 h-4 relative overflow-hidden">
-          <div class="w-2.5 h-2.5 left-[3.33px] top-[3.33px] absolute "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z"/></svg></div>
+          <div id="mangoCross" class="w-2.5 h-2.5 left-[3.33px] top-[3.33px] absolute "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z"/></svg></div>
         </div>
       </div>
-      <div class="self-stretch px-3 py-2 bg-green-50 rounded-lg inline-flex justify-start items-center gap-2.5">
-        <div class="flex-1 inline-flex flex-col justify-start items-start gap-1">
-          <div class="self-stretch justify-start text-gray-800 text-sm font-semibold font-['Inter'] leading-tight">Guava Tree</div>
-          <div class="opacity-50 justify-start text-gray-800 text-base font-normal font-['Inter'] leading-normal">৳500 x 1</div>
-        </div>
-        <div class="w-4 h-4 relative overflow-hidden">
-          <div class="w-2.5 h-2.5 left-[3.33px] top-[3.33px] absolute "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z"/></svg></div>
-        </div>
-      </div>
+      
       <div class="self-stretch h-0 opacity-10 outline outline-1 outline-offset-[-0.50px] outline-gray-800"></div>
       <div class="self-stretch inline-flex justify-start items-start gap-2">
         <div class="flex-1 justify-start text-gray-800 text-base font-medium font-['Inter']">Total:</div>
-        <div class="justify-start text-gray-800 text-base font-medium font-['Inter']">৳1000</div>
+        <div class="justify-start text-gray-800 text-base font-medium font-['Inter']" id="mangoTotal">৳1000</div>
       </div>
+      
     </div>
   </div>
   </div>
@@ -311,14 +259,12 @@
 </section>
 
 <!-- ABOUT -->
- 
-
 <section class="mb-10 p-4  ">
   <h1 class="self-stretch text-center justify-start text-gray-800 text-3xl font-semibold font-['Inter'] leading-10 mb-10">About the Campaign</h1>
     <div class="flex flex-col gap-4 sm:flex-row gap-4 items-center justify-center lg:px-90">
 
         <div>
-            <img class=" rounded-[10px] sm:w-[800px]" src="/assets/about.png" />
+            <img class="w-full sm:w-[800px] md:w-[1200px] lg:w-[1600px] xl:w-[1920px] h-auto rounded-[10px] object-cover mx-auto" src="/assets/about.png" />
         </div>
 
         <div>
@@ -424,77 +370,54 @@
 
 </footer>
 
-
-
-
-
+<!-- MODALS -->
 
 <section id="MODALS">
 
-  <section class="MainContentModal">
+      <section class="MainContentModal">
+          
+          <dialog id="my_modal_1" class="modal">
+            <div class="modal-box">            
+              <div id="MainModal" class="p-4 bg-white rounded-lg flex flex-col gap-3">              
+                <div id="modalTitle" class="text-gray-800 text-2xl font-semibold"></div>            
+                <img id="modalImage" src="" alt="Plant Image" class="h-48 rounded-lg">            
+                <div id="modalCategory" class="text-gray-800 text-sm font-semibold">Category : </div>
+                <div id="modalPrice" class="text-gray-800 text-sm font-semibold">৳ </div>
+                <div id="modalDescription" class="text-gray-800 text-sm font-semibold italic"></div>
+                <button id="modalAddToCart" class="w-full px-5 py-3 bg-green-700 hover:bg-yellow-300 rounded-full text-white text-base font-medium">
+                  Add to Cart
+                </button>
+              </div>
+              <div class="modal-action">
+                <form method="dialog">
+                  <button class="btn">Close</button>
+                </form>
+              </div>
+            </div>
+          </dialog>
 
- 
-<dialog id="my_modal_1" class="modal">
-  <div class="modal-box">
-    
-  
-    <div id="MainModal" class="p-4 bg-white rounded-lg flex flex-col gap-3">
-     
-      <div id="modalTitle" class="text-gray-800 text-2xl font-semibold"></div>
-
-  
-      <img id="modalImage" src="" alt="Plant Image" class="h-48 rounded-lg">
-
-   
-      <div id="modalCategory" class="text-gray-800 text-sm font-semibold">Category : </div>
-
-     
-      <div id="modalPrice" class="text-gray-800 text-sm font-semibold">৳ </div>
-
-    
-      <div id="modalDescription" class="text-gray-800 text-sm italic"></div>
-
-     
-      <button id="modalAddToCart" class="w-full px-5 py-3 bg-green-700 hover:bg-yellow-300 rounded-full text-white text-base font-medium">
-        Add to Cart
-      </button>
-    </div>
-
-    
-    <div class="modal-action">
-      <form method="dialog">
-        <button class="btn">Close</button>
-      </form>
-    </div>
-  </div>
-</dialog>
-
-</section>
+       </section>
 
 
 <section class="mobileCategoryModal">
  
-                    <dialog id="mobileCategorymodal" class="modal">
+        <dialog id="mobileCategorymodal" class="modal">
                 <div class="modal-box ">
-                  
                   <div id="mobileCategorialmoal">
-                
                   </div>
-
                   <div class="modal-action">
                     <form method="dialog">
                       <button class="btn">Close</button>
                     </form>
                   </div>
                 </div>
-              </dialog>
+          </dialog>
 </section>
 
 <section class="mobileCartModal">
                  
-                    <dialog id="mobileCart" class="modal">
+    <dialog id="mobileCart" class="modal">
                 <div class="modal-box ">
-                  
                   <div class="flex flex-col">
                         <div class="flex p-4">
                           <div class="flex-1 inline-flex flex-col justify-start items-start gap-1">
@@ -510,17 +433,17 @@
 
                     <div class="self-stretch inline-flex justify-start items-start gap-2 mt-2 pl-4">
                       <div class="flex-1 justify-start text-gray-800 text-base font-medium font-['Inter']">Total:</div>
-                      <div class="justify-start text-gray-800 text-base font-medium font-['Inter'] ">৳1000</div>
+                      <div class="justify-start text-gray-800 text-base font-medium font-['Inter'] ">৳0.00</div>
                     </div>
 
                   <div class="modal-action">
                     <form method="dialog">
-                      <!-- if there is a button in form, it will close the modal -->
                       <button class="btn">Close</button>
                     </form>
                   </div>
                 </div>
-              </dialog>
+    </dialog>
+
 </section>
 
 </section>
