@@ -92,26 +92,7 @@ ActiveChecker=(buttons)=>{
 
 //Modal Pop Up
 
-  document.getElementById("MainModal").innerHTML=`
 
-<div class="p-4 bg-white rounded-lg flex flex-col gap-3 " id="/">
-    <div class="text-gray-800 text-2xl font-semibold" onclick="my_modal_1.showModal()" >/</div>
-                <img src="/"  class="h-48  rounded-lg">
-                <div class="flex flex-col gap-3">
-                <div class="text-gray-800 text-sm font-semibold" >Category : /</div>
-                <div class="flex-1 flex flex-col gap-2">
-                  <div class="flex-1 text-left text-gray-800 text-sm font-semibold">৳ Price :/</div>
-                    </div>
-                    <div class="flex flex-col gap-3">
-                    <div class="text-gray-800 text-sm font-itallic" >Description :/</div>
-                </div>
-                </div>
-                <button class=" Addtocart w-full px-5 py-3 bg-green-700 hover:bg-yellow-300 rounded-full text-white text-base font-medium">
-                Add to Cart
-                </button>
-            </div>
-
-`
 
 
 // Cards Creator
@@ -146,6 +127,21 @@ cardsCreator=(cardData)=>{
                 </button>
             </div>
             `;
+
+
+ Divplacer.querySelector(".productName").addEventListener("click", () => {
+      document.getElementById("modalTitle").innerText = card.name;
+      document.getElementById("modalImage").src = card.image;
+      document.getElementById("modalCategory").innerText = "Category: " + card.category;
+      document.getElementById("modalPrice").innerText = "৳ " + card.price;
+      document.getElementById("modalDescription").innerText = card.description;
+
+      document.getElementById("my_modal_1").showModal();
+    });
+
+
+
+
             
       document.getElementById("productContainer").appendChild(Divplacer);
       // ----------------------------

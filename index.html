@@ -21,7 +21,7 @@
   <body class="bg-[#F0FDF4] overflow-x-hidden">
 
 <!-- BootAnimation Spinner -->
-  <div id="spinner" class="fixed inset-0 bg-[#f0fdf4] bg-opacity-40 flex justify-center items-center hidden z-50">
+  <div id="spinner" class="fixed inset-0 bg-[#f0fdf4] bg-opacity-40 flex justify-center items-center hidden z-[9999]">
     <div class="w-12 h-12 border-4 border-white border-t-green-500 rounded-full animate-spin"></div>
   </div>
 
@@ -437,18 +437,38 @@
 <dialog id="my_modal_1" class="modal">
   <div class="modal-box">
     
-                  
-                  <div id="MainModal">
-                
-                  </div>
+  
+    <div id="MainModal" class="p-4 bg-white rounded-lg flex flex-col gap-3">
+     
+      <div id="modalTitle" class="text-gray-800 text-2xl font-semibold"></div>
 
-                  <div class="modal-action">
-                    <form method="dialog">
-                      <button class="btn">Close</button>
-                    </form>
-                  </div>
-                
+  
+      <img id="modalImage" src="" alt="Plant Image" class="h-48 rounded-lg">
+
+   
+      <div id="modalCategory" class="text-gray-800 text-sm font-semibold">Category : </div>
+
+     
+      <div id="modalPrice" class="text-gray-800 text-sm font-semibold">৳ </div>
+
+    
+      <div id="modalDescription" class="text-gray-800 text-sm italic"></div>
+
+     
+      <button id="modalAddToCart" class="w-full px-5 py-3 bg-green-700 hover:bg-yellow-300 rounded-full text-white text-base font-medium">
+        Add to Cart
+      </button>
+    </div>
+
+    
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
 </dialog>
+
 </section>
 
 
