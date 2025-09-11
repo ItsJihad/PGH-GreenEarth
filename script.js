@@ -68,6 +68,7 @@ ActiveChecker = (buttons) => {
   remover = () => {
     buttons.forEach((button) => {
       button.classList.remove("active");
+      
     });
   };
   // Button Clicking Function
@@ -75,6 +76,7 @@ ActiveChecker = (buttons) => {
     button.onclick = () => {
       remover();
       button.classList.add("active");
+      
 
       document.getElementById("productContainer").innerHTML = "";
       fetcher(`https://openapi.programming-hero.com/api/category/${button.id}`);
@@ -130,7 +132,7 @@ cardsCreator = (cardData) => {
     document.getElementById("productContainer").appendChild(Divplacer);
     // ----------------------------
 
-    pricer(card.name,card.price,document.querySelectorAll(".productName"))
+ 
 
   });
 };
@@ -141,11 +143,30 @@ window.onload = () => {
   fetcher("https://openapi.programming-hero.com/api/plants");
   fetcher("https://openapi.programming-hero.com/api/categories");
 };
-
+// --------------------------CART SECTION----------------------------------------
 const mangoName = document.getElementById("mangoName")
 const mangoPrice = document.getElementById("mangoPrice")
 const mangoQuantity = document.getElementById("mangoQuantity")
 const mangoTotal = document.getElementById("mangoTotal")
 const mangoCross = document.getElementById("mangoCross")
 
+productClicker=()=>{
 
+const cartContainer = document.getElementById("cartContainer")
+const newProduct=document.createElement("div")
+newProduct.innerHTML=`
+
+<div class="self-stretch px-3 py-2 bg-green-50 rounded-lg inline-flex justify-start items-center gap-2.5">
+        <div class="flex-1 inline-flex flex-col justify-start items-start gap-1">
+          <div class="self-stretch justify-start text-gray-800 text-sm font-semibold font-['Inter'] leading-tight" id="mangoName">Mango Tree</div>
+          <div class="opacity-50 justify-start text-gray-800 text-base font-normal font-['Inter'] leading-normal">৳<span id="mangoPrice">500</span> x <span id="mangoQuantity">1</span></div>
+        </div>
+        <div class="w-4 h-4 relative overflow-hidden">
+          <div  id="mangoCross" class="w-2.5 h-2.5 left-[3.33px] top-[3.33px] absolute "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z"></path></svg></div>
+        </div>
+      </div>
+
+`
+cartContainer.appendChild(newProduct)
+
+}
