@@ -20,6 +20,13 @@
   </head>
   <body class="bg-[#F0FDF4] overflow-x-hidden">
 
+<!-- BootAnimation Spinner -->
+  <div id="spinner" class="fixed inset-0 bg-[#f0fdf4] bg-opacity-40 flex justify-center items-center hidden z-50">
+    <div class="w-12 h-12 border-4 border-white border-t-green-500 rounded-full animate-spin"></div>
+  </div>
+
+
+
     <!-- Nav bar -->
     <section>
       <nav>
@@ -163,8 +170,8 @@
 
 
     <!-- CONTAINER -->
-<section class="flex justify-center items-center p-6">
-<div class="w-full inline-flex flex-col justify-start items-center gap-10 xl:p-16">
+<section class="flex justify-center items-center p-6 " >
+<div class="w-full inline-flex flex-col justify-start items-center gap-10 xl:p-16" id="tututu">
   <div class="self-stretch text-center justify-start text-gray-800 text-3xl font-semibold font-['Inter'] leading-10 ">Choose Your Trees</div>
 <!-- Mobile Category AREA -->
 <div class="  hidden  bg-[#FFFFFF] flex items-center justify-center p-4 rounded-2xl gap-4 p-4 sm:hidden" id="mobileCategoryContainer">
@@ -216,12 +223,15 @@
 </div>
 <!--  -->
 
-  <div class="">
-  <div class="self-stretch inline-flex justify-start items-start gap-7 ">
+  <div class="" id="total-Category-Product">
+  <div class="self-stretch inline-flex justify-start items-start gap-7 " >
+
+      
+
 
     <!-- Categories -->
     <div class="hidden lg:block w-64  flex-col justify-start items-start gap-4 ">
-      <div class="self-stretch justify-start text-black text-xl font-semibold font-['Inter'] leading-7 py-3">Categories</div>
+      <div class="self-stretch justify-start text-black text-xl font-semibold font-['Inter'] leading-7 py-3" id="category-titles">Categories</div>
       <div class="self-stretch flex flex-col gap-2 justify-start items-start" >
 
         
@@ -232,9 +242,6 @@
         <div class="self-stretch flex flex-col gap-2 justify-start items-start " id="categoryplace">
 
         </div>               
-
-    
-
       </div>
     </div>
 
@@ -261,6 +268,10 @@
                                     Add to Cart
                                     </button>
                                 </div> -->
+                                  
+
+
+
 
 
     </div>
@@ -502,6 +513,7 @@
 
 
     <script src="/script.js"></script>
+     
   </body>
 </html>
 
