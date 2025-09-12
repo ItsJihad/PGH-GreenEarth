@@ -136,4 +136,3 @@ Clicking a tree name on a card opens a modal with full tree details.
 🌴 https://pgh-green-earth.netlify.app/
 ```
 
-![image alt](https://raw.githubusercontent.com/ItsJihad/PGH-GreenEarth/main/assets/Group%202.png)
