@@ -46,7 +46,7 @@ ButtonCreator = (buttonData) => {
   buttonData.forEach((button) => {
     const categorybutton = document.createElement("button");
     categorybutton.classList =
-      "categorybuttons  m-2 sm:m-0 bg-[#F0FDF9] px-2.5 py-2 font-medium font-['Inter'] text-black rounded hover:bg-green-200 ";
+      "categorybuttons  m-2  bg-[#F0FDF9] px-2.5 py-2 font-medium font-['Inter'] text-black rounded hover:bg-green-200 ";
     categorybutton.id = button.id;
     categorybutton.textContent = button.category_name;
 
@@ -137,27 +137,17 @@ cardsCreator = (cardData) => {
     AddtoCartButtons.forEach(button=>{
         button.onclick=()=>{
             productClicker(card)
+            addToCalc(card)
+
               }
       })
-
-    
-
-
   });
   
-
-  
-
 };
 
 
 
 // --------------------------CART SECTION----------------------------------------
-const mangoName = document.getElementById("mangoName")
-const mangoPrice = document.getElementById("mangoPrice")
-const mangoQuantity = document.getElementById("mangoQuantity")
-const mangoTotal = document.getElementById("mangoTotal")
-const mangoCross = document.getElementById("mangoCross")
 
 productClicker=(card)=>{  
 
@@ -165,13 +155,13 @@ const cartContainer = document.getElementById("cartContainer")
 const newProduct=document.createElement("div")
 newProduct.innerHTML=`
 
-<div class="self-stretch px-3 py-2 bg-green-50 rounded-lg inline-flex justify-start items-center gap-2.5" id="${card.id}">
+<div class="self-stretch px-3 py-2 m-2 md:m-0 bg-green-50 rounded-lg inline-flex justify-start items-center gap-2.5" id="${card.id}">
         <div class="flex-1 inline-flex flex-col justify-start items-start gap-1">
-          <div class="self-stretch justify-start text-gray-800 text-sm font-semibold font-['Inter'] leading-tight" id="mangoName">${card.name}</div>
-          <div class="opacity-50 justify-start text-gray-800 text-base font-normal font-['Inter'] leading-normal">৳<span id="mangoPrice">${card.price}</span> x <span id="mangoQuantity">1</span></div>
+          <div class="self-stretch justify-start text-gray-800 text-sm font-semibold font-['Inter'] leading-tight " id="mangoName">${card.name}</div>
+          <div class="opacity-50 justify-start text-gray-800 text-base font-normal font-['Inter'] leading-normal mangoPrice">৳<span id="mangoPrice">${card.price}</span> x <span id="mangoQuantity">1</span></div>
         </div>
-        <div class="w-4 h-4 relative overflow-hidden">
-          <div  id="mangoCross" class="w-2.5 h-2.5 left-[3.33px] top-[3.33px] absolute "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z"></path></svg></div>
+        <div class="w-4 h-4 relative overflow-hidden mangoCross">
+          <div  id="mangoCross" class="  w-2.5 h-2.5 left-[3.33px] top-[3.33px] absolute "><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z"></path></svg></div>
         </div>
       </div>
 
@@ -179,8 +169,43 @@ newProduct.innerHTML=`
 cartContainer.appendChild(newProduct)
 
 
+
+// ----------------------------Products cloned to Mobile Carts ------------------------------
+      const mobilecart = document.getElementById("mobilemodalInside")
+      mobilecart.appendChild(newProduct.cloneNode(true))
+
+     
+// -----------------------------------Product Remover -------------------------------------
+
+const cross = newProduct.querySelectorAll(".mangoCross")
+    cross.forEach(cross=>{
+      cross.addEventListener("click",()=>{
+      cartContainer.removeChild(newProduct)
+      removeFromCart(card)
+      
+    })
+    })
 }
 
+// ---------------------------Mobile Cart Product Remover ------------------------
+
+    const mobileinsider = document.getElementById("mobilemodalInside")
+
+
+// ---------------------------- Price Calculator-------------------------------
+
+
+total=0
+addToCalc=(card)=>{
+ total += card.price; 
+ 
+ document.getElementById("mangoTotal").innerText = `৳ ${total}`;
+}
+
+removeFromCart=(card)=>{
+  total -= card.price;      
+  document.getElementById("mangoTotal").innerText = `৳ ${total}`;
+}
 
 
 // Loads on Boot
