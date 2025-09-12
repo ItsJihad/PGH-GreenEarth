@@ -201,7 +201,7 @@ productClicker = (card) => {
 total = 0;
 addToCalc = (card) => {
   total += card.price;
-
+  alert("Product Added to Cart")
   document.getElementById("mangoTotal").innerText = `৳ ${total}`;
   document.getElementById("mangoInmodal").innerText = `৳ ${total}`;
 };
@@ -210,6 +210,7 @@ removeFromCart = (card) => {
   total -= card.price;
   document.getElementById("mangoTotal").innerText = `৳ ${total}`;
   document.getElementById("mangoInmodal").innerText = `৳ ${total}`;
+  alert("Product Removed From Cart")
   if (total === 0) {
     document.getElementById("mangoTotal").innerText = "৳ 0.00";
     document.getElementById("mangoInmodal").innerText = "৳ 0.00";
