@@ -19,7 +19,6 @@ fetcher = (url) => {
 constructor = (data) => {
   if ("plants" in data && Array.isArray(data.plants)) {
     cardsCreator(data.plants);
-    
   } else if ("categories" in data && Array.isArray(data.categories)) {
     ButtonCreator(data.categories);
   }
@@ -57,8 +56,6 @@ ButtonCreator = (buttonData) => {
 
     const allButtons = document.querySelectorAll(".categorybuttons");
     ActiveChecker(allButtons);
-
-    
   });
 };
 
@@ -68,7 +65,6 @@ ActiveChecker = (buttons) => {
   remover = () => {
     buttons.forEach((button) => {
       button.classList.remove("active");
-      
     });
   };
   // Button Clicking Function
@@ -76,7 +72,6 @@ ActiveChecker = (buttons) => {
     button.onclick = () => {
       remover();
       button.classList.add("active");
-      
 
       document.getElementById("productContainer").innerHTML = "";
       fetcher(`https://openapi.programming-hero.com/api/category/${button.id}`);
@@ -84,14 +79,10 @@ ActiveChecker = (buttons) => {
   });
 };
 
-
-
 // Cards Creator
 
 cardsCreator = (cardData) => {
   cardData.forEach((card) => {
-    
-    
     const Divplacer = document.createElement("div");
     Divplacer.innerHTML = "";
     Divplacer.innerHTML = `
@@ -119,41 +110,53 @@ cardsCreator = (cardData) => {
             `;
 
     document.getElementById("productContainer").appendChild(Divplacer);
-            //modal Creator
+    //modal Creator
 
     Divplacer.querySelector(".productName").addEventListener("click", () => {
-      document.getElementById("modalTitle").innerText = card.name;
-      document.getElementById("modalImage").src = card.image;
-      document.getElementById("modalCategory").innerText = `Category : ${card.category}`
-      document.getElementById("modalPrice").innerText = `Price : ৳ ${card.price}`
-      document.getElementById("modalDescription").innerText =`Description : ${card.description}`
+          document.getElementById("modalTitle").innerText = card.name;
+          document.getElementById("modalImage").src = card.image;
+          document.getElementById("modalCategory").innerText = `Category : ${card.category}`;
+          document.getElementById("modalPrice").innerText = `Price : ৳ ${card.price}`;
+          document.getElementById("modalDescription").innerText = `Description : ${card.description}`;
+          document.getElementById("ModalAddtoCart").innerText = "Add to Cart";
 
-      document.getElementById("my_modal_1").showModal();
+      const modal = document.getElementById("my_modal_1");
+      const modalButton = document.getElementById("ModalAddtoCart");
+      
+      modalButton.replaceWith(modalButton.cloneNode(true));
+      const newModalButton = document.getElementById("ModalAddtoCart");
+
+      newModalButton.addEventListener("click", () => {
+                productClicker(card);
+                addToCalc(card);
+                modal.close(); 
+            });
+
+      
     });
-    
-// -----------------------Add to Cart on click on products-----------------------------
 
-    const AddtoCartButtons = Divplacer.querySelectorAll(".Addtocart")
-    AddtoCartButtons.forEach(button=>{
-        button.onclick=()=>{
-            productClicker(card)
-            addToCalc(card)
+    // ------------------------------------------Modal Add to cart ---------------------------------
 
-              }
-      })
-  });
   
+
+    // -----------------------Add to Cart on click on products-----------------------------
+
+    const AddtoCartButtons = Divplacer.querySelectorAll(".Addtocart");
+    AddtoCartButtons.forEach((button) => {
+      button.onclick = () => {
+        productClicker(card);
+        addToCalc(card);
+      };
+    });
+  });
 };
-
-
 
 // --------------------------CART SECTION----------------------------------------
 
-productClicker=(card)=>{  
-
-const cartContainer = document.getElementById("cartContainer")
-const newProduct=document.createElement("div")
-newProduct.innerHTML=`
+productClicker = (card) => {
+  const cartContainer = document.getElementById("cartContainer");
+  const newProduct = document.createElement("div");
+  newProduct.innerHTML = `
 
 <div class="self-stretch px-3 py-2 m-2 md:m-0 bg-green-50 rounded-lg inline-flex justify-start items-center gap-2.5" id="${card.id}">
         <div class="flex-1 inline-flex flex-col justify-start items-start gap-1">
@@ -165,53 +168,56 @@ newProduct.innerHTML=`
         </div>
       </div>
 
-`
-cartContainer.appendChild(newProduct)
+`;
+  cartContainer.appendChild(newProduct);
 
+  // ----------------------------Products cloned to Mobile Carts ------------------------------
+  const mobilecart = document.getElementById("mobilemodalInside");
+  const clonedProduct = mobilecart.appendChild(newProduct.cloneNode(true));
+  // ------------------------------------------------------------------------------
+  clonedProduct.classList.add("added-to-mobile-items");
+  const crossM = clonedProduct.querySelector("svg");
 
+  crossM.addEventListener("click", () => {
+    mobilecart.removeChild(clonedProduct);
+    cartContainer.removeChild(newProduct);
+    removeFromCart(card);
+  });
 
-// ----------------------------Products cloned to Mobile Carts ------------------------------
-      const mobilecart = document.getElementById("mobilemodalInside")
-      mobilecart.appendChild(newProduct.cloneNode(true))
+  // -----------------------------------Product Remover -------------------------------------
 
-     
-// -----------------------------------Product Remover -------------------------------------
+  const cross = newProduct.querySelectorAll(".mangoCross");
+  cross.forEach((cross) => {
+    cross.addEventListener("click", () => {
+      cartContainer.removeChild(newProduct);
+      mobilecart.removeChild(clonedProduct);
+      removeFromCart(card);
+    });
+  });
+};
 
-const cross = newProduct.querySelectorAll(".mangoCross")
-    cross.forEach(cross=>{
-      cross.addEventListener("click",()=>{
-      cartContainer.removeChild(newProduct)
-      removeFromCart(card)
-      
-    })
-    })
-}
+// ---------------------------- Price Calculator FOR PC-------------------------------
 
-// ---------------------------Mobile Cart Product Remover ------------------------
+total = 0;
+addToCalc = (card) => {
+  total += card.price;
 
-    const mobileinsider = document.getElementById("mobilemodalInside")
-
-
-// ---------------------------- Price Calculator-------------------------------
-
-
-total=0
-addToCalc=(card)=>{
- total += card.price; 
- 
- document.getElementById("mangoTotal").innerText = `৳ ${total}`;
-}
-
-removeFromCart=(card)=>{
-  total -= card.price;      
   document.getElementById("mangoTotal").innerText = `৳ ${total}`;
-}
+  document.getElementById("mangoInmodal").innerText = `৳ ${total}`;
+};
 
+removeFromCart = (card) => {
+  total -= card.price;
+  document.getElementById("mangoTotal").innerText = `৳ ${total}`;
+  document.getElementById("mangoInmodal").innerText = `৳ ${total}`;
+  if (total === 0) {
+    document.getElementById("mangoTotal").innerText = "৳ 0.00";
+    document.getElementById("mangoInmodal").innerText = "৳ 0.00";
+  }
+};
 
 // Loads on Boot
 window.onload = () => {
   fetcher("https://openapi.programming-hero.com/api/plants");
   fetcher("https://openapi.programming-hero.com/api/categories");
 };
-
-
